@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="default">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Staff</title>
+    <link rel="stylesheet" th:href="@{/staff_create.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+</head>
+<body>
+<div align="center">
+    <h1>Create Staff</h1>
+    <form action="#" th:action="@{/addStaff}" th:object="${staff}" method="post">
+       <label>Staff Name: </label>
+        <input type="text" th:field="*{staffName}"><br>
+        <label>Staff DOB: </label>
+        <input type="date" th:field="*{staffDOB}"><br>
+        <label>Staff Address: </label>
+        <input type="text" th:field="*{staffAddress}"><br>
+        <label>Staff Shift: </label>
+        <select th:field="*{staffShift}" th:multiple="multiple">
+            <option th:each="s : ${staffShiftList}" th:value="${s}" th:text="${s}">
+
+            </option>
+        </select>
+        <input type="submit" value="Submit">
+
+    </form>
+
+</div>
+
+</body>
+</html>
